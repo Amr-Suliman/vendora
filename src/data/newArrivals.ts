@@ -1,0 +1,58 @@
+export const newArrivals = [
+  {
+    id: 1,
+    name: "T-Shirt with Tape Details",
+    price: 120,
+    image: "/images/newArrivals/1.png",
+    rating: 4,
+  },
+  {
+    id: 2,
+    name: "Skinny Fit Jeans",
+    price: 120,
+    image: "/images/newArrivals/2.png",
+    rating: 4,
+  },
+  {
+    id: 3,
+    name: "Checkered Shirt",
+    price: 120,
+    image: "/images/newArrivals/3.png",
+    rating: 4,
+  },
+  {
+    id: 4,
+    name: "Floral Hawaiian Shirt",
+    price: 160,
+    image: "/images/newArrivals/f2.jpg",
+    rating: 4,
+  },
+  {
+    id: 5,
+    name: "Floral Resort Shirt",
+    price: 140,
+    image: "/images/newArrivals/f3.jpg",
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: "Denim Bermuda Shorts",
+    price: 200,
+    image: "/images/newArrivals/6.png",
+    rating: 4,
+  },
+  {
+    id: 7,
+    name: "Linen Wide-Leg Pants",
+    price: 180,
+    image: "/images/newArrivals/f7.jpg",
+    rating: 3,
+  },
+  {
+    id: 8,
+    name: "Printed Loose Blouse",
+    price: 220,
+    image: "/images/newArrivals/f8.jpg",
+    rating: 5,
+  },
+]
