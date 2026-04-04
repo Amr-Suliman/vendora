@@ -53,7 +53,7 @@ function OrderProgress({ createdAt }: { createdAt: string }) {
   const currentStep = Math.min(daysSince, 3)
 
   return (
-    <div className="px-6 py-5 border-t">
+    <div className="px-2 py-5 border-t">
       <div className="flex items-center justify-between relative">
         {/* Progress Line */}
         <div className="absolute top-4 left-0 right-0 h-[2px] bg-gray-200 dark:bg-neutral-700 mx-8" />
@@ -87,7 +87,7 @@ function OrderProgress({ createdAt }: { createdAt: string }) {
 /* ================= SKELETON ================= */
 function OrdersSkeleton() {
   return (
-    <div className="container mx-auto py-20 space-y-6 px-4">
+    <div className="container mx-auto py-20 space-y-6 px-2">
       {[1, 2].map((i) => (
         <div key={i} className="animate-pulse bg-white dark:bg-neutral-900 border rounded-2xl p-6 space-y-4">
           <div className="flex justify-between">
@@ -156,7 +156,7 @@ export default function AllOrdersPage() {
   /* ================= EMPTY ================= */
   if (orders.length === 0) {
     return (
-      <div className="container mx-auto py-32 text-center px-4">
+      <div className="container mx-auto py-32 text-center px-2">
         <div className="mx-auto w-24 h-24 rounded-full bg-muted flex items-center justify-center mb-6">
           <PackageCheck size={42} className="text-muted-foreground" />
         </div>
@@ -173,7 +173,7 @@ export default function AllOrdersPage() {
 
   /* ================= UI ================= */
   return (
-    <div className="container mx-auto pt-10 mb-10 px-4 space-y-6">
+    <div className="container mx-auto pt-10 mb-10 px-2 space-y-6">
 
       {/* PROMO BANNER */}
       <div className="rounded-2xl bg-gradient-to-r from-zinc-800 to-pink-900 p-6 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
