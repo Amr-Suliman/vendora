@@ -21,6 +21,18 @@ const font = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "VEND◯RA",
   description: "Modern e-commerce store",
+  openGraph: {
+    title: "VEND◯RA",
+    description: "Modern e-commerce store",
+    url: "https://vendora-store.vercel.app",
+    images: [
+      {
+        url: "/src/app/favicon.ico",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
