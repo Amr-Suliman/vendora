@@ -49,7 +49,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] grid grid-cols-1 lg:grid-cols-2 lg:mt-5 sm:px-2">
+    <div className="min-h-[calc(100vh-8rem)] grid grid-cols-1 lg:grid-cols-2 lg:mt-5 sm:px-2">
       {/* LEFT — Image Side */}
       <div className="hidden lg:flex relative overflow-hidden bg-black h-[600px] rounded-sm">
         <img

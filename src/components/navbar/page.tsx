@@ -155,7 +155,7 @@ export default function Navbar() {
                         <button
                             className="md:hidden pt-0.5 rounded-md hover:bg-black/5 dark:hover:bg-white/10"
                             onClick={() => setMenuOpen(true)}>
-                            <Menu size={22} />
+                            <Menu size={26} />
                         </button>
                         <Link href="/" className="logo">VEND◯RA</Link>
                     </div>
