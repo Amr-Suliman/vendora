@@ -54,7 +54,7 @@ export default function ProductCard({ product }: { product: ProductI }) {
             ${product.price}
           </p>
         </div>
-        <div className="w-75">
+        <div className="w-70">
           <AddToCart productId={product._id} />
         </div>
       </CardContent>

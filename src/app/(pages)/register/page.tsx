@@ -97,7 +97,7 @@ export default function RegisterPage() {
 
           {/* HEADER */}
           <div className="mb-8">
-            <p className="text-xs font-semibold tracking-[0.3em] text-zinc-400 uppercase -mt-5 mb-2">
+            <p className="text-xs font-semibold tracking-[0.3em] text-zinc-400 uppercase -mt-15 mb-2">
               Get started
             </p>
             <h1 className="text-3xl font-extrabold tracking-tight">
@@ -159,7 +159,7 @@ export default function RegisterPage() {
                 )}
               />
 
-              {/* PASSWORD + CONFIRM — جنب بعض */}
+              {/* PASSWORD + CONFIRM */}
               <div className="grid grid-cols-2 gap-3">
                 <FormField
                   control={form.control}
