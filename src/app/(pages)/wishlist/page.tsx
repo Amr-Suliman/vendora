@@ -11,13 +11,14 @@ import AddToCart from "@/components/addToCart/AddToCart"
 import { Skeleton } from "@/components/ui/skeleton"
 import MyStarIcon from "@/components/myStarIcon/myStarIcon"
 import { WishlistProduct } from "@/interfaces/wishlist"
+import { useWishlist } from "@/components/context/WishlistContext"
 
 const WISHLIST_URL = "https://ecommerce.routemisr.com/api/v1/wishlist"
 
 export default function WishlistPage() {
   const { data: session, status } = useSession()
+  const { removeFromWishlist } = useWishlist()
 
-  // Wishlist state
   const [wishlist, setWishlist] = useState<WishlistProduct[]>([])
   const [loading, setLoading] = useState(true)
   const [removingId, setRemovingId] = useState<string | null>(null)
@@ -43,18 +44,14 @@ export default function WishlistPage() {
     getWishlist()
   }, [status, session])
 
-  // Remove item with optimistic UI
+  // Remove item
   async function handleRemove(productId: string) {
     if (!session?.token) return
-
     setRemovingId(productId)
-    setWishlist(prev => prev.filter(item => item._id !== productId))
 
     try {
-      await fetch(`${WISHLIST_URL}/${productId}`, {
-        method: "DELETE",
-        headers: { token: session.token }
-      })
+      await removeFromWishlist(productId)
+      setWishlist(prev => prev.filter(item => item._id !== productId))
       toast.success("Removed from wishlist")
     } catch {
       toast.error("Something went wrong")
@@ -66,7 +63,7 @@ export default function WishlistPage() {
   // Loading skeleton
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mt-5 pb-20 px-4 sm:px-6 md:px-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mt-5 pb-20 px-2 sm:px-6 md:px-0">
         {Array.from({ length: 4 }).map((_, i) => (
           <Card key={i} className="group w-full border-none shadow-sm p-3">
             <Skeleton className="w-full h-56 rounded-lg mb-3" />
@@ -103,7 +100,6 @@ export default function WishlistPage() {
           >
             <Card className="group w-full border-none shadow-none relative">
 
-              {/* Product image + remove button */}
               <div className="relative rounded-lg overflow-hidden p-3 shadow-sm hover:shadow-md transition">
                 <Image
                   src={item.imageCover}
@@ -125,13 +121,11 @@ export default function WishlistPage() {
                 </button>
               </div>
 
-              {/* Product info */}
               <CardHeader className="flex flex-col items-center justify-center gap-1 -mb-3">
                 <CardTitle className="font-semibold line-clamp-1 text-center">{item.brand.name}</CardTitle>
                 <CardDescription className="text-muted-foreground line-clamp-1 text-center">{item.title}</CardDescription>
               </CardHeader>
 
-              {/* Price + Rating + Add to cart */}
               <CardContent className="flex flex-col items-center gap-2">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-0.5">

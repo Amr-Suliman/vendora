@@ -61,7 +61,7 @@ export default function CheckOut({ cartId }: Props) {
 
     try {
       const url = method === "visa"
-        ? `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`
+        ? `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${window.location.origin}`
         : `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`
 
       const response = await fetch(url, {
@@ -116,13 +116,12 @@ export default function CheckOut({ cartId }: Props) {
             ].map((s, i) => (
               <React.Fragment key={s.key}>
                 <div className="flex items-center gap-2">
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-                    step === s.key
-                      ? "bg-black text-white dark:bg-white dark:text-black"
-                      : step === "payment" && s.key === "address"
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step === s.key
+                    ? "bg-black text-white dark:bg-white dark:text-black"
+                    : step === "payment" && s.key === "address"
                       ? "bg-green-500 text-white"
                       : "bg-zinc-100 dark:bg-zinc-800 text-zinc-400"
-                  }`}>
+                    }`}>
                     {step === "payment" && s.key === "address" ? "✓" : s.num}
                   </div>
                   <span className={`text-sm font-medium ${step === s.key ? "text-black dark:text-white" : "text-zinc-400"}`}>
@@ -159,7 +158,7 @@ export default function CheckOut({ cartId }: Props) {
                   value={form.details}
                   onChange={handleChange}
                   placeholder="Street, building, floor..."
-                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm outline-none focus:border-black dark:focus:border-white transition"/>
+                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm outline-none focus:border-black dark:focus:border-white transition" />
               </div>
 
               {/* CITY */}
@@ -170,7 +169,7 @@ export default function CheckOut({ cartId }: Props) {
                   value={form.city}
                   onChange={handleChange}
                   placeholder="Cairo, Alexandria..."
-                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm outline-none focus:border-black dark:focus:border-white transition"/>
+                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm outline-none focus:border-black dark:focus:border-white transition" />
               </div>
 
               {/* PHONE */}
@@ -181,7 +180,7 @@ export default function CheckOut({ cartId }: Props) {
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="01xxxxxxxxx"
-                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm outline-none focus:border-black dark:focus:border-white transition"/>
+                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm outline-none focus:border-black dark:focus:border-white transition" />
                 <p className="text-xs text-zinc-400">Egyptian number only (01x)</p>
               </div>
 

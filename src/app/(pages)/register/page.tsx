@@ -60,7 +60,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] grid grid-cols-1 lg:grid-cols-2">
+    <div className="min-h-[calc(100vh-4rem)] grid grid-cols-1 lg:grid-cols-2 lg:mt-5">
 
       {/* LEFT — Image Side */}
       <div className="hidden lg:flex relative overflow-hidden bg-black h-[600px]">
@@ -88,7 +88,7 @@ export default function RegisterPage() {
       </div>
 
       {/* RIGHT — Form Side */}
-      <div className="flex items-center justify-center px-6 py-12 bg-white dark:bg-neutral-950 overflow-y-auto">
+      <div className="flex items-center justify-center px-3 py-12 bg-white dark:bg-neutral-950 overflow-y-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

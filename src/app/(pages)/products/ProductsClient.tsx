@@ -33,7 +33,7 @@ export default function ProductsClient({ products }: { products: ProductI[] }) {
             <CategoriesSlider />
 
             {/* PRODUCTS */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 mt-5 pb-20 px-3 sm:px-6 md:px-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 mt-5 pb-20 px-1 sm:px-6 md:px-0">
                 {products.map((product, i) => (
                     <motion.div
                         key={product._id}

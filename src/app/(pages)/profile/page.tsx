@@ -11,7 +11,7 @@ export default async function ProfilePage() {
 
   return (
     <div className="min-h-screen dark:bg-zinc-950">
-      <div className="container mx-auto pt-8 pb-20 px-4 sm:px-6 lg:px-0 max-w-5xl">
+      <div className="container mx-auto pt-8 pb-20 px-2 sm:px-6 lg:px-0 max-w-5xl">
 
         {/* PROFILE HEADER */}
         <ProfileHeader name={session.user.name!} email={session.user.email!} />

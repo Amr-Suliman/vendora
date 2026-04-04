@@ -27,7 +27,8 @@ import { Badge } from "@/components/ui/badge"
 import { CartContext } from "../context/CartContext"
 import { signOut, useSession } from "next-auth/react"
 import AnnouncementBar from "@/components/layout/AnnouncementBar"
-import SearchInput from "@/components/search/SearchInput"
+import DesktopSearch from "@/components/search/DesktopSearch";
+import { MobileSearchOverlay } from "@/components/search/MobileSearchOverlay"
 import { Heart } from "lucide-react"
 import { ChevronDown } from "lucide-react"
 
@@ -63,6 +64,9 @@ export default function Navbar() {
     const userRef = useRef<HTMLDivElement>(null)
     const firstItemRef = useRef<HTMLAnchorElement>(null)
     const shopRef = useRef<HTMLDivElement | null>(null)
+
+    const [mobileShopOpen, setMobileShopOpen] = useState(false)
+
 
     // Close shop dropdown on outside click
     useEffect(() => {
@@ -143,8 +147,7 @@ export default function Navbar() {
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.4 }}
-                className={`fixed ${showAnnouncement ? "top-10" : "top-0"} left-0 z-40 w-full dark:bg-black/60 backdrop-blur-xl border-b border-black/5 dark:border-white/10`}
-            >
+                className={`fixed ${showAnnouncement ? "top-10" : "top-0"} left-0 z-40 w-full dark:bg-black/60 backdrop-blur-xl border-b border-black/5 dark:border-white/10`}>
                 <div className="container mx-auto px-4 h-16 flex items-center gap-9">
 
                     {/* Left side */}
@@ -211,8 +214,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-4 ml-auto">
 
                         {/* SearchInput Desktop */}
-                        <SearchInput />
-
+                        <DesktopSearch />
                         {/* Dark mode */}
                         <button onClick={() => setDark(!dark)} className="hidden md:block rounded-md hover:bg-black/5 dark:hover:bg-white/10">
                             {dark ? <Sun size={23} /> : <Moon size={23} />}
@@ -223,11 +225,10 @@ export default function Navbar() {
                             <Heart size={22} />
                         </Link>
 
-                        {/* Mobile Search Button ← هنا بس */}
+                        {/* Mobile Search Button */}
                         <button
                             className="md:hidden"
-                            onClick={() => setMobileSearchOpen(p => !p)}
-                        >
+                            onClick={() => setMobileSearchOpen(p => !p)}>
                             <Search size={22} />
                         </button>
 
@@ -241,11 +242,16 @@ export default function Navbar() {
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                                     </svg>
                                 </motion.div>
-                                {!!cartData?.numOfCartItems && (
-                                    <Badge className="absolute -top-3 -right-2.5 rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                                        {isLoading ? <Loader className="w-3 h-3 animate-spin" /> : cartData.numOfCartItems}
-                                    </Badge>
-                                )}
+
+                                <div className="absolute -top-3 -right-2.5">
+                                    {isLoading ? (
+                                        <span className="w-5 h-5 rounded-full bg-gray-200 dark:bg-white/20 animate-pulse block" />
+                                    ) : !!cartData?.numOfCartItems ? (
+                                        <Badge className="rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                                            {cartData.numOfCartItems}
+                                        </Badge>
+                                    ) : null}
+                                </div>
                             </Link>
                         )}
 
@@ -263,8 +269,7 @@ export default function Navbar() {
                             <div ref={userRef} className="relative -mt-1 pl-1">
                                 <button
                                     onClick={() => setUserOpen(p => !p)}
-                                    className="cursor-pointer w-8 h-8 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center text-sm font-bold hover:opacity-80 transition"
-                                >
+                                    className="cursor-pointer w-8 h-8 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center text-sm font-bold hover:opacity-80 transition">
                                     {session?.user?.name?.[0] ?? <User size={16} />}
                                 </button>
 
@@ -275,8 +280,7 @@ export default function Navbar() {
                                             animate={{ opacity: 1, scale: 1, y: 0 }}
                                             exit={{ opacity: 0, scale: 0.92, y: -10 }}
                                             transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                            className="absolute right-0 mt-2 z-50 w-56 bg-white dark:bg-zinc-950 border border-black/5 dark:border-white/10 rounded-2xl shadow-xl overflow-hidden"
-                                        >
+                                            className="absolute right-0 mt-2 z-50 w-56 bg-white dark:bg-zinc-950 border border-black/5 dark:border-white/10 rounded-2xl shadow-xl overflow-hidden">
                                             {status === "authenticated" ? (
                                                 <>
                                                     <div className="px-4 py-3 border-b border-black/5 dark:border-white/10 bg-zinc-50 dark:bg-zinc-900">
@@ -311,8 +315,7 @@ export default function Navbar() {
                                                     <div className="py-1.5">
                                                         <button
                                                             onClick={() => { setUserOpen(false); signOut({ callbackUrl: "/" }) }}
-                                                            className="flex w-full items-center gap-2.5 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition"
-                                                        >
+                                                            className="flex w-full items-center gap-2.5 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition" >
                                                             <LogOut size={15} />Logout
                                                         </button>
                                                     </div>
@@ -332,22 +335,11 @@ export default function Navbar() {
                 </div>
             </motion.nav>
 
-            {/* ← MOBILE SEARCH BAR هنا برا الـ nav */}
-            <AnimatePresence>
-                {mobileSearchOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className={`fixed ${showAnnouncement ? "top-[104px]" : "top-16"} left-0 w-full z-30 px-4 py-3 bg-white dark:bg-black border-b border-black/5 dark:border-white/10 md:hidden`}
-                    >
-                        <SearchInput isMobile onClose={() => setMobileSearchOpen(false)} />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <MobileSearchOverlay
+                isOpen={mobileSearchOpen}
+                onClose={() => setMobileSearchOpen(false)}
+            />
 
-            {/* ← SPACER هنا برا الـ nav */}
             <div className={`transition-all duration-300 ease-in-out ${showAnnouncement ? "h-[104px]" : "h-16"}`} />
 
             {/* ================= MOBILE DRAWER ================= */}
@@ -395,62 +387,88 @@ export default function Navbar() {
                             <nav className="flex-1 px-4 py-6 overflow-y-auto">
                                 <p className="text-[10px] font-semibold tracking-widest uppercase text-zinc-400 px-3 mb-3">Navigation</p>
                                 <ul className="flex flex-col gap-1 mb-6">
-                                    {navLinks.map(link => {
+                                    {navLinks.map((link, i) => {
                                         const active = pathname === link.href
                                         if (link.name === "Shop") {
                                             return (
                                                 <li key={link.name}>
-                                                    <button
-                                                        onClick={() => setShopOpen(p => !p)}
-                                                        className="flex items-center justify-between w-full px-3 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+                                                    <motion.div
+                                                        initial={{ opacity: 0, x: -16 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        transition={{ delay: 0.1 + i * 0.06, ease: [0.32, 0.72, 0, 1], duration: 0.3 }}
                                                     >
-                                                        <span>Shop</span>
-                                                        <motion.span animate={{ rotate: shopOpen ? 180 : 0 }} transition={{ duration: 0.2 }} className="flex items-center">
-                                                            <ChevronDown size={16} />
-                                                        </motion.span>
-                                                    </button>
-                                                    <AnimatePresence>
-                                                        {shopOpen && (
-                                                            <motion.ul
-                                                                initial={{ opacity: 0, height: 0 }}
-                                                                animate={{ opacity: 1, height: "auto" }}
-                                                                exit={{ opacity: 0, height: 0 }}
-                                                                transition={{ duration: 0.2 }}
-                                                                className="overflow-hidden pl-4 mt-1 flex flex-col gap-1"
+                                                        <button
+                                                            onClick={() => setMobileShopOpen(p => !p)}
+                                                            className="flex items-center justify-between w-full px-3 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+                                                        >
+                                                            <span>Shop</span>
+                                                            <motion.span
+                                                                animate={{ rotate: mobileShopOpen ? 180 : 0 }}
+                                                                transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                                                                className="flex items-center"
                                                             >
-                                                                {[
-                                                                    { name: "All Products", href: "/products" },
-                                                                    { name: "Men's Fashion", href: "/categories/men's-fashion" },
-                                                                    { name: "Women's Fashion", href: "/categories/women's-fashion" },
-                                                                    { name: "Electronics", href: "/categories/electronics" },
-                                                                ].map(sub => (
-                                                                    <li key={sub.name}>
-                                                                        <Link
-                                                                            href={sub.href}
-                                                                            onClick={() => { setMenuOpen(false); setShopOpen(false) }}
-                                                                            className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-black dark:hover:text-white transition"
+                                                                <ChevronDown size={16} />
+                                                            </motion.span>
+                                                        </button>
+
+                                                        <AnimatePresence initial={false}>
+                                                            {mobileShopOpen && (
+                                                                <motion.ul
+                                                                    initial={{ opacity: 0, height: 0 }}
+                                                                    animate={{ opacity: 1, height: "auto" }}
+                                                                    exit={{ opacity: 0, height: 0 }}
+                                                                    transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                                                                    className="overflow-hidden pl-4 mt-1 flex flex-col gap-1"
+                                                                >
+                                                                    {[
+                                                                        { name: "All Products", href: "/products" },
+                                                                        { name: "Men's Fashion", href: "/categories/men's-fashion" },
+                                                                        { name: "Women's Fashion", href: "/categories/women's-fashion" },
+                                                                        { name: "Electronics", href: "/categories/electronics" },
+                                                                    ].map((sub, j) => (
+                                                                        <motion.li
+                                                                            key={sub.name}
+                                                                            initial={{ opacity: 0, x: -8 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{ delay: j * 0.05, duration: 0.2 }}
                                                                         >
-                                                                            <span className="w-1 h-1 rounded-full bg-zinc-400 flex-shrink-0" />
-                                                                            {sub.name}
-                                                                        </Link>
-                                                                    </li>
-                                                                ))}
-                                                            </motion.ul>
-                                                        )}
-                                                    </AnimatePresence>
+                                                                            <Link
+                                                                                href={sub.href}
+                                                                                onClick={() => { setMenuOpen(false); setMobileShopOpen(false) }}
+                                                                                className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-black dark:hover:text-white transition"
+                                                                            >
+                                                                                <span className="w-1 h-1 rounded-full bg-zinc-400 flex-shrink-0" />
+                                                                                {sub.name}
+                                                                            </Link>
+                                                                        </motion.li>
+                                                                    ))}
+                                                                </motion.ul>
+                                                            )}
+                                                        </AnimatePresence>
+                                                    </motion.div>
                                                 </li>
                                             )
                                         }
+
                                         return (
                                             <li key={link.name}>
-                                                <Link
-                                                    href={link.href}
-                                                    onClick={() => setMenuOpen(false)}
-                                                    className={`flex items-center justify-between px-3 py-3 rounded-xl text-sm font-medium transition-all ${active ? "bg-black text-white dark:bg-white dark:text-black" : "hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300"}`}
+                                                <motion.div
+                                                    initial={{ opacity: 0, x: -16 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.1 + i * 0.06, ease: [0.32, 0.72, 0, 1], duration: 0.3 }}
                                                 >
-                                                    {link.name}
-                                                    {active && <span className="text-xs opacity-60">→</span>}
-                                                </Link>
+                                                    <Link
+                                                        href={link.href}
+                                                        onClick={() => setMenuOpen(false)}
+                                                        className={`flex items-center justify-between px-3 py-3 rounded-xl text-sm font-medium transition-all ${active
+                                                                ? "bg-black text-white dark:bg-white dark:text-black"
+                                                                : "hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
+                                                            }`}
+                                                    >
+                                                        {link.name}
+                                                        {active && <span className="text-xs opacity-60">→</span>}
+                                                    </Link>
+                                                </motion.div>
                                             </li>
                                         )
                                     })}

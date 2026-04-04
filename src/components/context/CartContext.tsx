@@ -9,7 +9,7 @@ type CartContextType = {
     isLoading: boolean
     setIsLoading: (value: boolean) => void
     getCart: () => Promise<void>
-    isInCart: (productId: string) => boolean  // ← ضيفها هنا
+    isInCart: (productId: string) => boolean
 }
 
 export const CartContext = createContext<CartContextType>({
@@ -18,21 +18,30 @@ export const CartContext = createContext<CartContextType>({
     isLoading: false,
     setIsLoading: () => { },
     getCart: async () => { },
-    isInCart: () => false  // ← وهنا
+    isInCart: () => false
 })
 
 export default function CartContextProvider({ children }: { children: ReactNode }) {
     const [cartData, setCartData] = useState<CartResponse | null>(null)
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     async function getCart() {
         try {
             setIsLoading(true)
             const response = await fetch("/api/get-cart")
+
+            // User is not authenticated, clear cart silently
+            if (response.status === 401) {
+                setCartData(null)
+                return
+            }
+
+            // Something went wrong with the request
             if (!response.ok) {
                 setCartData(null)
                 return
             }
+
             const data: CartResponse = await response.json()
             setCartData(data)
         } catch (error) {
@@ -62,7 +71,7 @@ export default function CartContextProvider({ children }: { children: ReactNode 
                 isLoading,
                 setIsLoading,
                 getCart,
-                isInCart, 
+                isInCart,
             }}
         >
             {children}

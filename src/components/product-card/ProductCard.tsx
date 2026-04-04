@@ -30,8 +30,7 @@ export default function ProductCard({ product }: { product: ProductI }) {
             alt={product.title}
             width={220}
             height={220}
-            className="w-full h-70 sm:h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-          />
+            className="w-full h-70 sm:h-auto object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
       </Link>
 
@@ -50,13 +49,12 @@ export default function ProductCard({ product }: { product: ProductI }) {
         <div className="flex items-center gap-8">
           <ProductRating
             rating={product.ratingsAverage}
-            count={product.ratingsQuantity}
-          />
+            count={product.ratingsQuantity}/>
           <p className="font-bold text-lg">
             ${product.price}
           </p>
         </div>
-        <div className="w-70">
+        <div className="w-75">
           <AddToCart productId={product._id} />
         </div>
       </CardContent>

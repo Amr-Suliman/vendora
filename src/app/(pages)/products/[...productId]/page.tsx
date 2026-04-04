@@ -37,8 +37,7 @@ export default async function ProductDetails({ params }: { params: Params }) {
         </p>
         <Link
           href="/products"
-          className="flex items-center gap-2 text-sm font-semibold bg-black text-white dark:bg-white dark:text-black px-6 py-2.5 rounded-full hover:opacity-80 transition"
-        >
+          className="flex items-center gap-2 text-sm font-semibold bg-black text-white dark:bg-white dark:text-black px-6 py-2.5 rounded-full hover:opacity-80 transition">
           <ArrowLeft size={14} />
           Back to Products
         </Link>
@@ -53,12 +52,10 @@ export default async function ProductDetails({ params }: { params: Params }) {
         {/* LEFT – Images */}
         <div className="flex flex-col items-center w-full">
           <div className="border rounded-lg overflow-hidden w-full max-w-md flex items-center justify-center">
-            <div className="pl-4 sm:pl-18 md:pl-10 lg:pl-17">
+            <div className="px-5 sm:pl-18 md:pl-10 lg:pl-17">
               <ProductSlider
                 images={product.images}
-                altContent={product.title}
-
-              />
+                altContent={product.title}/>
             </div>
           </div>
 
@@ -67,15 +64,13 @@ export default async function ProductDetails({ params }: { params: Params }) {
             {product.images.map((img, i) => (
               <div
                 key={i}
-                className="border rounded-md overflow-hidden cursor-pointer flex items-center justify-center"
-              >
+                className="border rounded-md overflow-hidden cursor-pointer flex items-center justify-center">
                 <Image
                   src={img}
                   alt={product.title}
                   width={85}
                   height={85}
-                  className="object-cover"
-                />
+                  className="object-cover" />
               </div>
             ))}
           </div>
@@ -90,7 +85,7 @@ export default async function ProductDetails({ params }: { params: Params }) {
           </p>
 
           {/* TITLE */}
-          <h1 className="text-3xl font-extrabold tracking-tight leading-tight">
+          <h1 className="text-lg sm:text-2xl md:text-3xl  font-bold tracking-tight leading-tight">
             {product.title}
           </h1>
 
@@ -149,10 +144,10 @@ export default async function ProductDetails({ params }: { params: Params }) {
 
           {/* DESCRIPTION */}
           <div className="space-y-2">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-400">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-200">
               Product Details
             </h2>
-            <p className="text-muted-foreground leading-relaxed text-sm">
+            <p className="text-zinc-300 leading-relaxed text-sm">
               {product.description}
             </p>
           </div>

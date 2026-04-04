@@ -47,7 +47,7 @@ export default function WishList({ productId }: { productId: string }) {
     <button
       onClick={handleWishlist}
       disabled={wishlistLoading}
-      className="absolute top-2 right-1 rounded-full z-10 bg-white dark:bg-zinc-800 p-2 shadow hover:scale-110 transition">
+      className="absolute top-2 right-1 rounded-tr-lg rounded-bl-lg z-10 bg-white dark:bg-zinc-800 p-2 shadow hover:scale-110 transition">
       {wishlistLoading ? (
         <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
       ) : (
