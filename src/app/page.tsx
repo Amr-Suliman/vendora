@@ -131,7 +131,7 @@ export default function Home() {
       <TopSellingSection limit={4} />
       <div className="flex justify-center -mt-12 mb-10">
         <Link
-          href="/top-selling"
+          href="/on-sale"
           className="border px-16 py-2.5 rounded-full hover:bg-black hover:text-white transition dark:hover:bg-zinc-600 dark:bg-zinc-900 text-sm font-medium">
           View All
         </Link>
