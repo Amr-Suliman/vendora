@@ -55,7 +55,7 @@ export default async function ProductDetails({ params }: { params: Params }) {
             <div className="px-5 sm:pl-18 md:pl-10 lg:pl-17">
               <ProductSlider
                 images={product.images}
-                altContent={product.title}/>
+                altContent={product.title} />
             </div>
           </div>
 
@@ -144,10 +144,10 @@ export default async function ProductDetails({ params }: { params: Params }) {
 
           {/* DESCRIPTION */}
           <div className="space-y-2">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-200">
+            <h2 className="text-sm md:text-lg font-bold uppercase tracking-wider dark:text-zinc-200">
               Product Details
             </h2>
-            <p className="text-zinc-300 leading-relaxed text-sm">
+            <p className="text-sm md:text-base md:font-medium leading-relaxed dark:text-zinc-300">
               {product.description}
             </p>
           </div>
