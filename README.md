@@ -80,8 +80,8 @@ src/
 
 ## 🛠️ Getting Started
 ```bash
-git clone https://github.com/your-username/shopmart
-cd shopmart
+git clone https://github.com/your-username/vendora
+cd vendora
 npm install
 cp .env.example .env.local
 npm run dev
