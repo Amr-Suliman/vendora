@@ -1,15 +1,17 @@
 <p align="center">
-  <img src="./assets/banner.png" alt="Vendora Banner" width="100%" />
+  <img src="./assets/banner.png" alt="Vendora Banner" />
 </p>
 
 <h1 align="center">Vendora</h1>
 
 <p align="center">
-A modern e-commerce platform built with <strong>Next.js 15</strong>, designed to deliver a fast, secure, and intuitive shopping experience.
+A modern e-commerce platform built with <strong>Next.js 15</strong>, delivering a fast, secure, and intuitive shopping experience.
 </p>
 
 <p align="center">
   <a href="https://vendora-store.vercel.app/">Live Demo</a>
+  •
+  <a href="#preview">Preview</a>
   •
   <a href="#features">Features</a>
   •
@@ -18,55 +20,81 @@ A modern e-commerce platform built with <strong>Next.js 15</strong>, designed to
   <a href="#getting-started">Getting Started</a>
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15-black" alt="Next.js">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/shadcn/ui-black" alt="shadcn/ui">
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
+</p>
+
 ---
 
 ## Overview
 
-Vendora is a full-stack e-commerce application built with modern web technologies and production-ready practices.
+Vendora is a modern full-stack e-commerce application built with production-ready technologies and best practices.
 
-The project was developed with a strong focus on performance, scalability, maintainability, and user experience. It provides a complete shopping workflow, including authentication, product browsing, wishlist management, shopping cart, secure checkout, and order tracking.
+The project focuses on creating a scalable, secure, and high-performance shopping experience while maintaining clean architecture and reusable components. It includes authentication, wishlist management, shopping cart, secure checkout, order tracking, responsive design, and smooth user interactions.
 
-Rather than being just a UI showcase, Vendora follows a clean architecture and patterns commonly used in real-world applications.
+Rather than being just a UI showcase, Vendora demonstrates how a real-world e-commerce application can be structured using the latest Next.js ecosystem.
 
 ---
 
 ## Live Demo
 
-**Website**
-
-https://vendora-store.vercel.app/
+🌐 **https://vendora-store.vercel.app/**
 
 ---
 
 ## Preview
 
-> Replace the following images with screenshots from your project.
+<table>
+<tr>
+<td width="50%">
 
-<p align="center">
-  <img src="./assets/home.png" width="100%" alt="Home Page">
-</p>
+### Home
 
-<p align="center">
-  <img src="./assets/products.png" width="100%" alt="Products Page">
-</p>
+<img src="./assets/home.png" alt="Home Page"/>
 
-<p align="center">
-  <img src="./assets/cart.png" width="100%" alt="Shopping Cart">
-</p>
+</td>
 
-<p align="center">
-  <img src="./assets/checkout.png" width="100%" alt="Checkout">
-</p>
+<td width="50%">
+
+### Products
+
+<img src="./assets/products.png" alt="Products Page"/>
+
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+
+### Cart
+
+<img src="./assets/cart.png" alt="Shopping Cart"/>
+
+</td>
+
+<td width="50%">
+
+### Checkout
+
+<img src="./assets/checkout.png" alt="Checkout Page"/>
+
+</td>
+</tr>
+</table>
 
 ---
 
-# Features
+## Features
 
 ### Shopping Experience
 
 - Browse products
-- Search products instantly
-- Filter by category
+- Instant product search
+- Category filtering
 - Product details page
 - Responsive product gallery
 
@@ -76,7 +104,7 @@ https://vendora-store.vercel.app/
 - Wishlist management
 - Shopping cart
 - Order history
-- Profile management
+- User profile
 
 ### Checkout
 
@@ -86,23 +114,23 @@ https://vendora-store.vercel.app/
 
 ### User Experience
 
-- Fully responsive layout
+- Fully responsive design
 - Dark mode
 - Skeleton loading
-- Smooth animations
+- Smooth page animations
 - Toast notifications
 - Optimized image loading
 
 ---
 
-# Tech Stack
+## Tech Stack
 
 | Category | Technology |
-|------------|------------|
+|----------|------------|
 | Framework | Next.js 15 (App Router) |
 | Language | TypeScript |
 | Styling | Tailwind CSS |
-| UI Library | shadcn/ui |
+| UI Components | shadcn/ui |
 | Animations | Framer Motion |
 | Authentication | NextAuth.js |
 | State Management | Context API |
@@ -111,54 +139,44 @@ https://vendora-store.vercel.app/
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```text
-src
-│
-├── app
-│
-├── components
-│
-├── context
-│
-├── data
-│
-├── hooks
-│
-├── interfaces
-│
-├── lib
-│
-├── services
-│
-├── utils
-│
+src/
+├── app/
+├── components/
+├── context/
+├── data/
+├── hooks/
+├── interfaces/
+├── lib/
+├── services/
+├── utils/
 └── middleware.ts
 ```
 
 ---
 
-# Architecture
+## Architecture
 
 The application follows a modular architecture to improve scalability and maintainability.
 
-- Component-based structure
+- Component-based architecture
 - Reusable UI components
 - Context API for global state
-- Server Actions for authenticated requests
-- Middleware route protection
+- Server Actions for secure requests
+- Route protection using middleware
 - Environment variables for sensitive data
 - Clear separation between UI and business logic
 
 ---
 
-# Performance
+## Performance
 
 The application is optimized using modern Next.js features.
 
-- Server Components
 - App Router
+- Server Components
 - Code Splitting
 - Lazy Loading
 - Image Optimization
@@ -167,9 +185,9 @@ The application is optimized using modern Next.js features.
 
 ---
 
-# Security
+## Security
 
-Security is handled using best practices.
+Security is implemented using modern best practices.
 
 - Secure authentication with NextAuth.js
 - Protected routes
@@ -179,7 +197,7 @@ Security is handled using best practices.
 
 ---
 
-# Getting Started
+## Getting Started
 
 Clone the repository
 
@@ -187,7 +205,7 @@ Clone the repository
 git clone https://github.com/Amr-Suliman/vendora.git
 ```
 
-Move into the project
+Navigate to the project
 
 ```bash
 cd vendora
@@ -205,23 +223,23 @@ Create your environment file
 cp .env.example .env.local
 ```
 
-Start the development server
+Run the development server
 
 ```bash
 npm run dev
 ```
 
-Open
+Open your browser
 
-```
+```text
 http://localhost:3000
 ```
 
 ---
 
-# Environment Variables
+## Environment Variables
 
-Create a `.env.local` file.
+Create a `.env.local` file and add the following variables:
 
 ```env
 NEXTAUTH_URL=
@@ -235,10 +253,10 @@ API_BASE_URL=
 
 ---
 
-# Roadmap
+## Roadmap
 
 - Product Reviews
-- Ratings System
+- Product Ratings
 - Coupons & Discounts
 - Admin Dashboard
 - Product Recommendations
@@ -248,26 +266,18 @@ API_BASE_URL=
 
 ---
 
-# Author
+## Author
 
-### Amr ElGohary
+**Amr ElGohary**
 
-Frontend Developer passionate about building fast, scalable, and user-friendly web applications with modern technologies.
+Frontend Developer passionate about building fast, scalable, and user-friendly web applications using modern technologies.
 
-**GitHub**
-
-https://github.com/Amr-Suliman
-
-**LinkedIn**
-
-https://linkedin.com/in/amr-suleiman
-
-**Portfolio**
-
-https://your-portfolio.vercel.app
+- **Portfolio:** https://amr-suleiman-portfolio.vercel.app
+- **GitHub:** https://github.com/Amr-Suliman
+- **LinkedIn:** https://linkedin.com/in/amr-suleiman
 
 ---
 
 <p align="center">
-  <strong>If you found this project useful, consider giving it a ⭐ on GitHub.</strong>
+If you enjoyed this project, consider giving it a ⭐ on GitHub.
 </p>
