@@ -42,7 +42,7 @@ Rather than being just a UI showcase, Vendora demonstrates how a real-world e-co
 
 ## Live Demo
 
-🌐 **https://vendora-store.vercel.app/**
+**https://vendora-store.vercel.app/**
 
 ---
 
@@ -141,18 +141,58 @@ Rather than being just a UI showcase, Vendora demonstrates how a real-world e-co
 
 ## Project Structure
 
+The project is organized using the Next.js App Router with a modular architecture that separates pages, reusable components, shared utilities, and application logic.
+
 ```text
 src/
-├── app/
-├── components/
-├── context/
-├── data/
-├── hooks/
-├── interfaces/
-├── lib/
-├── services/
-├── utils/
-└── middleware.ts
+├── app/                         # Application routes (Next.js App Router)
+│   ├── (pages)/                 # Main application pages
+│   │   ├── addresses/
+│   │   ├── allorders/
+│   │   ├── brands/
+│   │   ├── cart/
+│   │   ├── categories/
+│   │   ├── contact/
+│   │   ├── login/
+│   │   ├── products/
+│   │   │   ├── [...productId]/
+│   │   │   └── _action/
+│   │   ├── profile/
+│   │   ├── register/
+│   │   └── wishlist/
+│   │
+│   └── api/                     # API route handlers
+│       ├── auth/
+│       ├── contact/
+│       ├── get-cart/
+│       ├── newsletter/
+│       └── users/
+│
+├── components/                  # Reusable UI components
+│   ├── address/
+│   ├── addToCart/
+│   ├── checkOut/
+│   ├── context/
+│   ├── footer/
+│   ├── home/
+│   ├── layout/
+│   ├── navbar/
+│   ├── product-card/
+│   ├── productSlider/
+│   ├── search/
+│   ├── transition/
+│   ├── ui/
+│   └── wishlist/
+│
+├── data/                        # Static application data
+├── hooks/                       # Custom React hooks
+├── interfaces/                  # TypeScript interfaces
+├── lib/                         # Shared utility functions
+├── Helpers/                     # Helper functions
+├── types/                       # Global type definitions
+│
+├── auth.ts                      # NextAuth configuration
+└── proxy.ts                     # Request proxy configuration
 ```
 
 ---
@@ -279,5 +319,5 @@ Frontend Developer passionate about building fast, scalable, and user-friendly w
 ---
 
 <p align="center">
-If you enjoyed this project, consider giving it a ⭐ on GitHub.
+If you enjoyed this project, consider giving it a on GitHub.
 </p>
