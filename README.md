@@ -308,9 +308,11 @@ API_BASE_URL=
 
 ## Author
 
-**Amr ElGohary**
+**Amr Suleiman**
 
-Frontend Developer passionate about building fast, scalable, and user-friendly web applications using modern technologies.
+Vendora started as an attempt to answer one question: what does a "real" e-commerce app look like once you strip away the tutorial shortcuts? Building it meant making the same trade-offs a production team would — route protection, server-side security, state that doesn't fall apart at scale — rather than optimizing for a pretty demo.
+
+I'm a frontend developer who spends most of his time in the Next.js/React ecosystem, currently finishing a CS degree while mentoring students at IEEE and ICPC on programming fundamentals. Vendora sits alongside my other work, including LinkedPost, a React-based social platform.
 
 - **Portfolio:** https://amr-suleiman-portfolio.vercel.app
 - **GitHub:** https://github.com/Amr-Suliman
@@ -319,5 +321,5 @@ Frontend Developer passionate about building fast, scalable, and user-friendly w
 ---
 
 <p align="center">
-If you enjoyed this project, consider giving it a on GitHub.
+If this project was useful to you, consider giving it a ⭐ on GitHub.
 </p>
